@@ -1,0 +1,5 @@
+@if $hide-sso-signup-button-on-mobile == "true" {
+  .sso-signup-button {
+    display: none;
+  }
+}
