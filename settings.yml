@@ -1,8 +1,8 @@
 sso_signup_url:
   type: string
   default: ""
-  description: "Here you can add the DiscourseConnect signup url."
+  description: "Here you can add the DiscourseConnect Signup button url."
 hide_sso_signup_button_on_mobile:
   type: bool
   default: false
-  description: "Enable this to hide sso signup button on mobile."
+  description: "Enable this to hide DiscourseConnect Signup button on mobile."
