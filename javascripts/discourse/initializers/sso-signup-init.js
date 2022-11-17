@@ -6,6 +6,8 @@ export default {
   initialize() {
     withPluginApi("0.8.7", (api) => {
       api.reopenWidget("header-buttons", {
+        tagName: "span.header-buttons",
+        
         html(attrs) {
           if (this.currentUser) {
             return;
