@@ -9,12 +9,28 @@
 
     <div class="buttons">
       {{#if (and (theme-setting 'cta_sso_signup_button_url') this.siteSettings.enable_discourse_connect)}}
-        <DButton @href={{theme-setting "sso_signup_url"}} @label="signup_cta.sign_up" @icon="user" @class="btn-primary" />
-        {{else}}
-        <DButton @action={{route-action "showCreateAccount"}} @label="signup_cta.sign_up" @icon="user" @class="btn-primary" />
+        <DButton 
+          @href={{theme-setting "sso_signup_url"}}
+          @label="signup_cta.sign_up"
+          @icon="user"
+          @class="btn-primary"
+        />
+      {{else}}
+        <DButton
+          @action={{route-action "showCreateAccount"}}
+          @label="signup_cta.sign_up"
+          @icon="user"
+          @class="btn-primary"
+        />
       {{/if}}
-      <DButton @action={{action "hideForSession"}} @label="signup_cta.hide_session" @class="no-icon" />
-      <a href {{on "click" this.neverShow}}>{{i18n "signup_cta.hide_forever"}}</a>
+      <DButton
+        @action={{action "hideForSession"}}
+        @label="signup_cta.hide_session"
+        @class="no-icon"
+      />
+      <a href {{on "click" this.neverShow}}>{{i18n
+          "signup_cta.hide_forever"
+        }}</a>
     </div>
   {{/if}}
 </div>
