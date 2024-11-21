@@ -5,8 +5,9 @@ import { i18n } from "discourse-i18n";
 
 export default apiInitializer("1.14.0", (api) => {
   const currentUser = api.getCurrentUser();
+  const siteSettings = api.container.lookup("service:site-settings");
 
-  if (currentUser) {
+  if (currentUser && !siteSettings.enable_discourse_connect) {
     return;
   }
 
