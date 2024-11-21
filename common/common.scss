@@ -1,15 +1,22 @@
 .d-header {
-  .auth-buttons {
-    .sign-up-button:not(.sso-signup-button) {
-      display: none;
-    }
-  }
   .sso-signup-button {
     margin-left: 7px;
     @if $hide-sso-signup-button-on-mobile == "true" {
       .mobile-view & {
         display: none;
       }
+    }
+    // Hide the default signup button when the custom signup button available
+    ~ .auth-buttons {
+      .sign-up-button {
+        display: none;
+      }
+    }
+  }
+  // Show the default signup button when the custom signup button not available
+  .auth-buttons {
+    .sign-up-button {
+      display: flex;
     }
   }
 }

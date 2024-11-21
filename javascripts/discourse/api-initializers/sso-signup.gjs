@@ -5,10 +5,7 @@ import { i18n } from "discourse-i18n";
 
 export default apiInitializer("1.14.0", (api) => {
   const currentUser = api.getCurrentUser();
-
-  if (currentUser) {
-    return;
-  }
+  const siteSettings = api.container.lookup("service:site-settings");
 
   const signUpSsoButton = <template>
     <DButton
@@ -18,9 +15,11 @@ export default apiInitializer("1.14.0", (api) => {
     />
   </template>
 
-  api.headerButtons.add(
-    "sso-signup",
-    signUpSsoButton,
-    { before: "auth" }
-  )
+  if (!currentUser && siteSettings.enable_discourse_connect) {
+    api.headerButtons.add(
+      "sso-signup",
+      signUpSsoButton,
+      { before: "auth" }
+    )
+  }
 });
