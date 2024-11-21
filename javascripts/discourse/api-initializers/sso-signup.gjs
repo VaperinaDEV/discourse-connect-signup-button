@@ -7,10 +7,6 @@ export default apiInitializer("1.14.0", (api) => {
   const currentUser = api.getCurrentUser();
   const siteSettings = api.container.lookup("service:site-settings");
 
-  if (currentUser && !siteSettings.enable_discourse_connect) {
-    return;
-  }
-
   const signUpSsoButton = <template>
     <DButton
       class="btn-primary btn-small sign-up-button sso-signup-button"
@@ -19,9 +15,11 @@ export default apiInitializer("1.14.0", (api) => {
     />
   </template>
 
-  api.headerButtons.add(
-    "sso-signup",
-    signUpSsoButton,
-    { before: "auth" }
-  )
+  if (!currentUser && siteSettings.enable_discourse_connect) {
+    api.headerButtons.add(
+      "sso-signup",
+      signUpSsoButton,
+      { before: "auth" }
+    )
+  }
 });
