@@ -21,6 +21,6 @@ export default apiInitializer("1.14.0", (api) => {
   api.headerButtons.add(
     "sso-signup",
     signUpSsoButton,
-    { after: "auth" }
+    { before: "auth" }
   )
 });
