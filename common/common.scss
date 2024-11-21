@@ -5,16 +5,18 @@
       .mobile-view & {
         display: none;
       }
-    }   
+    }
+    // Hide the default signup button when the custom signup button available
     ~ .auth-buttons {
       .sign-up-button {
-        display: flex;
+        display: none;
       }
     }
   }
+  // Show the default signup button when the custom signup button not available
   .auth-buttons {
     .sign-up-button {
-      display: none;
+      display: flex;
     }
   }
 }
